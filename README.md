@@ -1,7 +1,11 @@
 # navi-vue-editor 
 基于Vue框架的Web地图编辑器的基础工程
 
-工程使用vue2.0版的vue-cli3.4.1版工具构建 
-```yarn global add @vue/cli``` 
-```vue create navi-vue-editor-framework```
-
+## 工程的环境依赖
+1. vue2.0
+2. vue-cli-service
+2. nodejs-9.10+
+3. babel-7.0+
+4. yarn
+5. vue-router
+6. vuex
