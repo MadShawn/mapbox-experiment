@@ -1,4 +1,4 @@
-# navi-vue-editor 
+# navi-vue-editor-framework 
 基于Vue框架的Web地图编辑器的基础工程
 
 ## 工程的环境依赖
@@ -9,3 +9,5 @@
 4. yarn
 5. vue-router
 6. vuex
+7. element-ui
+8. axios
