@@ -1,0 +1,67 @@
+div.fm-stretch {
+    width: 100%;
+    height: 100%;
+}
+
+div.fm-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 用于布局的div样式 */
+/* 横向布局 */
+div.fm-layout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* 纵向布局 */
+div.fm-layout.col {
+    flex-direction: column;
+}
+
+div.fm-container {
+    display: flex;
+}
+
+div.fm-container.col {
+    width: auto;
+    height: 100%;
+}
+
+div.fm-container.row {
+    width: 100%;
+    height: auto;
+}
+
+.fm-container-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: all .3s;
+    z-index: 3;
+    background: url('../images/layout/icon_close.png') no-repeat center center transparent;
+}
+
+.fm-container-close:hover {
+    transform: rotate(90deg);
+}
+
+div.fm-float-container {
+    position: absolute;
+}
+
+div.fm-fitsize {
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
