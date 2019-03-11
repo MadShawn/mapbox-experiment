@@ -192,7 +192,7 @@ export default {
   margin-bottom: 30px;
   text-align: center;
 }
-.btn-submit {
+button.btn-submit {
   width: 360px;
   height: 40px;
   background-image: url("../assets/images/login/button_login_normal.png");
@@ -200,24 +200,24 @@ export default {
   border: 1px #636ef5;
   border-radius: 3px;
 }
-.btn-submit:hover {
+button.btn-submit:hover {
   background-image: url("../assets/images/login/button_login_hover.png");
   cursor: pointer;
 }
-.btn-submit:active {
+button.btn-submit:active {
   background-image: url("../assets/images/login/button_login_loading.png");
 }
-.btn-submit:disabled {
+button.btn-submit:disabled {
   background-image: url("../assets/images/login/button_login_gray.png");
 }
-.btn-submit > span.text {
+button.btn-submit > span.text {
   width: 20px;
   height: 20px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
 }
-.btn-submit > div.loading-gif {
+button.btn-submit > div.loading-gif {
   width: 30px;
   height: 30px;
   margin: 0 auto;

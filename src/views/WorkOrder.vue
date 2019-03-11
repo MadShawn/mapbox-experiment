@@ -133,7 +133,7 @@ export default {
 .fm-container.left {
   width: 240px;
   height: 100%;
-  background: url('../assets/images/workOrder/background-left.png') no-repeat;
+  background: url('../assets/images/workOrder/background_left.png') no-repeat;
   background-size: cover;
   transition: cubic-bezier(0, 0.96, 0.57, 0.95) 0.3s;
 }
@@ -142,7 +142,7 @@ export default {
 }
 .fm-container.right {
   flex: 1;
-  background: url('../assets/images/layout/background-big.png') no-repeat;
+  background: url('../assets/images/workOrder/background_right.png') no-repeat;
   background-size: cover;
 }
 .fm-container.top {
@@ -181,11 +181,11 @@ export default {
   cursor: pointer;
 }
 .icon-btn.fold-left {
-  background: url('../assets/images/workOrder/icon_left_fold.png') center center
+  background: url('../assets/images/workOrder/icon_fold_left.png') center center
     no-repeat;
 }
 .icon-btn.fold-right {
-  background: url('../assets/images/workOrder/icon_right_fold.png') center
+  background: url('../assets/images/workOrder/icon_fold_right.png') center
     center no-repeat;
 }
 .icon-btn.settings {
@@ -197,11 +197,11 @@ export default {
     no-repeat;
 }
 .icon-btn.arrow-left {
-  background: url('../assets/images/workOrder/icon_up.png') center center
+  background: url('../assets/images/workOrder/icon_arrow_left.png') center center
     no-repeat;
 }
 .icon-btn.arrow-down {
-  background: url('../assets/images/workOrder/icon_down.png') center center
+  background: url('../assets/images/workOrder/icon_arrow_down.png') center center
     no-repeat;
 }
 button.menu-btn {
