@@ -4,13 +4,13 @@
 ## 工程的环境依赖
 1. vue2.0
 2. vue-cli-service
-2. nodejs-9.10+
-3. babel-7.0+
-4. yarn
-5. vue-router
-6. vuex
-7. axios
-7. normalize.css // 重置浏览器默认样式
-8. element-ui // ui组件
-9. veeValidate  // form验证
-10. vue-easytable // 表格组件
+3. nodejs-9.10+
+4. babel-7.0+
+5. yarn
+6. vue-router
+7. vuex
+8. axios
+9. normalize.css // 重置浏览器默认样式
+10. element-ui // ui组件
+11. veeValidate  // form验证
+12. vue-easytable // 表格组件
