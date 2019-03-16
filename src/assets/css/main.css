@@ -9,16 +9,10 @@ body {
     min-width: 400px;
     font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
     font-size: 12px;
-    /* background: #1a1a1a; */
+    background: #fff;
 }
 
-div {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-/*滚动条*/
-
+/* 滚动条 */
 *::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -32,206 +26,23 @@ div {
     background: #c1c1c1;
 }
 
-/* 自定义滚动条 */
-
-.fm-scroll {
-    overflow: auto;
+input,
+button,
+select,
+textarea {
+    outline: none;
 }
 
-.fm-scroll::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background: rgba(0, 0, 0, 0.1);
+input:disabled,
+select:disabled,
+button:disabled,
+a:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.fm-scroll::-webkit-scrollbar-thumb {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    background: #c1c1c1;
-}
-
-
-/* 文本超长显示控制 */
-
-.fm-ellipsis {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-/* 有标题的面板 */
-
-.fm-panel {
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff;
-    /*box-shadow: 0 0 10px #93bbff;*/
-    overflow: hidden;
-    /* 与header中的margin-top: -40px配合使用，使得content可以有自适应高度的滚动条 */
-    padding-top: 40px;
-    font-size: 0px;
-}
-
-.fm-panel>.header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    line-height: 40px;
-    height: 40px;
-    padding: 0px 10px;
-    background-color: #636ef5;
-    font-size: 0px;
-    margin-top: -40px;
-}
-
-.fm-panel>.header>.title {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.fm-panel>.header>.toolbar {
-    display: flex;
-    align-items: center;
-}
-
-.fm-panel>.header>.toolbar+.title {
-    margin-left: 10px;
-}
-
-.fm-panel>.header>.toolbar>*:not(:first-child) {
-    margin-left: 10px;
-}
-
-.fm-panel>.content {
-    width: 100%;
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    font-size: 12px;
-    position: inherit;
-}
-
-.fm-panel>.footer {
-    text-align: right;
-    padding: 10px;
-}
-
-.fm-dialog {
-    position: fixed;
-    width: auto;
-    height: auto;
-    background: #fff;
-    box-shadow: 0 4px 20px #5c78a7;
-    z-index: 99;
-}
-
-.fm-dialog>.header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    line-height: 40px;
-    height: 40px;
-    padding: 0px 10px;
-    background-color: #636ef5;
-    font-size: 0px;
-    margin-top: -40px;
-}
-
-.fm-dialog>.header>.title {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-.fm-dialog>.header>.toolbar {
-    display: flex;
-    align-items: center;
-}
-
-.fm-dialog>.header>.toolbar+.title {
-    margin-left: 10px;
-}
-
-.fm-dialog>.tools {
-    float: right;
-    font-size: 0px;
-    height: 40px;
-    line-height: 40px;
-    padding-right: 20px;
-    cursor: move;
-}
-
-.fm-dialog>.tools>.img-btn {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: middle;
-    cursor: pointer;
-}
-
-.fm-dialog>.content {
-    height: auto;
-    width: auto;
-    padding: 0px;
-    margin: 0px;
-    z-index: -1;
-}
-
-.fm-dialog-mini {
-    position: fixed;
-    right: 0px;
-    width: 180px;
-    line-height: 30px;
-    background: #3399ff;
-    border-radius: 3px 3px 0 0;
-    box-shadow: 0 4px 20px #5c78a7;
-    padding: 0px 10px;
-    z-index: 20;
-    cursor: move;
-}
-
-.fm-dialog-mini>.title {
-    display: inline-block;
-    color: #fff;
-    font-size: 14px;
-}
-
-.fm-dialog-mini>.tools {
-    display: inline-block;
-    font-size: 0px;
-}
-
-.fm-dialog-mini>.tools>span {
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.fm-job-panel {
-    display: flex;
-    flex-flow: column nowrap;
-    background-color: #fff;
-}
-
-.fm-job-panel>.header {
-    height: 40px;
-    line-height: 40px;
-    padding: 0px 20px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.fm-job-panel>.content {
-    height: 100%;
-    padding: 0px 10px;
-}
-
-.fm-job-panel>.footer {
-    text-align: right;
-    padding: 10px;
+/* div的盒子类型 */
+div {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }

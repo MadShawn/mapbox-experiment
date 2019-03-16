@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import DSManage from '../services/DSManage';
+import DSManage from '@/services/DSManage';
 
 export default {
   name: 'Login',

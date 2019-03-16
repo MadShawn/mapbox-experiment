@@ -24,7 +24,7 @@ export default {
       });
     }
   },
-  mounted() {
+  created() {
     // 非Chrome浏览器警告
     if (!this.App.Util.testBrowser(['Chrome/57'])) {
       alert('请使用谷歌浏览器！');
@@ -62,6 +62,7 @@ export default {
 <style>
 @import "./assets/css/layout.css";
 @import "./assets/css/form.css";
+@import "./assets/css/component.css";
 
 #app {
   -webkit-font-smoothing: antialiased;

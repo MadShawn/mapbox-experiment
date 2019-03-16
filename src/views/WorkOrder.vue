@@ -56,14 +56,12 @@
       </div>
     </div>
     <div class="fm-container col right">
-      <router-view></router-view>
+      <router-view @row-dblclick="test"></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import DSManage from '../services/DSManage';
-
 export default {
   name: 'WorkOrder',
   props: {},
@@ -121,6 +119,9 @@ export default {
     },
     logout() {
       this.$router.push('login');
+    },
+    test(params) {
+      this.$router.push('mapEditor');
     }
   },
   watch: {},
@@ -142,21 +143,21 @@ export default {
 }
 .fm-container.right {
   flex: 1;
-  background: url('../assets/images/workOrder/background_right.png') no-repeat;
-  background-size: cover;
+  /* background: url('../assets/images/workOrder/background_right.png') no-repeat; */
+  /* background-size: cover; */
 }
 .fm-container.top {
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .fm-container.middle {
   flex: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 .fm-container.bottom {
   width: 100%;
   height: 50px;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 .menubar-header,
 .menubar-footer {

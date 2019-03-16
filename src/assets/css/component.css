@@ -1,0 +1,310 @@
+/*** 常用组件的样式 ***/
+
+/* 下拉菜单样式 */
+ul.fm-dropdown-menu {
+    border-radius: 3px;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    display: block;
+    box-shadow: 0 2px 6px 0 #93bbff;
+}
+
+ul.fm-dropdown-menu>li {
+    border: 1px solid #fff;
+    list-style: none;
+    background-color: #fff;
+    font-size: 12px;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    color: #182848;
+}
+
+ul.fm-dropdown-menu>li:hover {
+    background-color: rgba(88, 150, 255, 0.1);
+    border: 1px solid #5896ff;
+}
+
+ul.fm-dropdown-menu>li>a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #182848;
+}
+
+ul.fm-dropdown-menu>li.disabled {
+    color: rgba(24, 40, 72, 0.5);
+    cursor: not-allowed;
+}
+
+/* 属性显示列表样式 */
+ul.prop-list {
+    margin: 0px;
+    padding: 0px;
+    background-color: #ffffff;
+    display: block;
+    box-shadow: none;
+    font-size: 0px;
+}
+
+ul.prop-list>li {
+    line-height: 30px;
+}
+
+ul.prop-list>li>div.prop-name {
+    display: inline-block;
+    width: 85px;
+    text-align: right;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+ul.prop-list>li>div.prop-content {
+    display: inline-block;
+    width: 200px;
+    padding: 0px 15px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 12px;
+}
+
+/* 元素列表显示样式 */
+ul.item-list {
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+    border-radius: 0px;
+    font-size: 0px;
+}
+
+ul.item-list>li {
+    display: inline-block;
+    padding: 0px 5px;
+    line-height: 30px;
+}
+
+ul.item-list>li * {
+    font-size: 12px;
+}
+
+
+/* 规则列表显示样式 */
+ul.rule-list {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul.rule-list>li {
+    list-style: none;
+    padding: 0px 5px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+ul.rule-list>li.active {
+    border-top: 1px solid #3f9fff;
+    border-bottom: 1px solid #3f9fff;
+    background-color: #eaf5ff;
+}
+
+ul.rule-list>li>input[type='checkbox'],
+ul.rule-list>li>input[type='radio'] {
+    flex: 0 0 12px;
+}
+
+/* 文本超长显示控制 */
+.fm-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 有标题的面板 */
+.fm-panel {
+    min-width: 200px;
+    min-height: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #93bbff;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.fm-panel>.header {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    background-color: #636ef5;
+}
+
+.fm-panel>.header>.title {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.fm-panel>.header>.toolbar {
+    display: flex;
+    align-items: center;
+}
+
+.fm-panel>.header>.toolbar+.title {
+    margin-left: 10px;
+}
+
+.fm-panel>.header>.toolbar>*:not(:first-child) {
+    margin-left: 10px;
+}
+
+.fm-panel>.content {
+    flex: 1;
+    padding: 10px;
+    margin: 0px;
+}
+
+.fm-panel>.footer {
+    width: 100%;
+    height: 40px;
+    text-align: right;
+    padding: 10px;
+}
+
+.fm-dialog {
+    position: fixed;
+    width: auto;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 4px 20px #5c78a7;
+    z-index: 99;
+}
+
+.fm-dialog>.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    line-height: 40px;
+    height: 40px;
+    padding: 0px 10px;
+    background-color: #636ef5;
+    font-size: 0px;
+    margin-top: -40px;
+}
+
+.fm-dialog>.header>.title {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.fm-dialog>.header>.toolbar {
+    display: flex;
+    align-items: center;
+}
+
+.fm-dialog>.header>.toolbar+.title {
+    margin-left: 10px;
+}
+
+.fm-dialog>.tools {
+    float: right;
+    font-size: 0px;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 20px;
+    cursor: move;
+}
+
+.fm-dialog>.tools>.img-btn {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.fm-dialog>.content {
+    height: auto;
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    z-index: -1;
+}
+
+.fm-dialog-mini {
+    position: fixed;
+    right: 0px;
+    width: 180px;
+    line-height: 30px;
+    background: #3399ff;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 4px 20px #5c78a7;
+    padding: 0px 10px;
+    z-index: 20;
+    cursor: move;
+}
+
+.fm-dialog-mini>.title {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+}
+
+.fm-dialog-mini>.tools {
+    display: inline-block;
+    font-size: 0px;
+}
+
+.fm-dialog-mini>.tools>span {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.fm-job-panel {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #fff;
+}
+
+.fm-job-panel>.header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fm-job-panel>.content {
+    height: 100%;
+    padding: 0px 10px;
+}
+
+.fm-job-panel>.footer {
+    text-align: right;
+    padding: 10px;
+}
+
+.fm-blue-box {
+    border: 1px solid #3399ff;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 5px 0px;
+}
+
+/* 属性面板种的横向分割线 */
+.apart-line {
+    height: 1px;
+    background-color: rgb(99, 110, 245);
+    margin: 0px;
+}

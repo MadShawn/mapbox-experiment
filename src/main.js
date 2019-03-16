@@ -3,11 +3,11 @@ import './assets/css/main.css';
 
 import Vue from 'vue';
 import App from './App.vue';
-import router from './router';
-import store from './store';
-import './plugins/element';
-import './plugins/validate';
-import './plugins/easytable';
+import router from '@/routes';
+import store from '@/stores';
+import '@/plugins/element';
+import '@/plugins/validate';
+import '@/plugins/easytable';
 
 import Global from './Application';
 
