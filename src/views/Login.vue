@@ -61,7 +61,9 @@
 </template>
 
 <script>
-import DSManage from '@/services/DSManage';
+import { get } from '@/services/Service';
+import auth from '@/utils/auth';
+import url from '@/api';
 
 export default {
   name: 'Login',
@@ -79,7 +81,7 @@ export default {
   },
   methods: {
     clearCaches() {
-      this.App.Util.removeSessionStorageObject();
+      auth.removeSessionStorageObject();
       this.App.Util.clearAppTemp();
     },
     doLogin() {
@@ -90,15 +92,13 @@ export default {
       this.$validator.validate().then((result) => {
         if (result) {
           this.showLoading = true;
-          const serviceConf = this.App.Util.getServiceConfig(this.accessType);
-          const dsManage = new DSManage({
-            services: serviceConf,
-            accessType: this.accessType
-          });
-          dsManage
-            .login(this.userName, this.password)
+          const param = {
+            userNickName: this.userName,
+            userPassword: this.password
+          };
+          get(url.login, param)
             .then((rest) => {
-              this.App.Temp.accessToken = rest.access_token;
+              auth.setSessionStorage('ADMIN_TOKEN', rest.access_token);
 
               const userObj = {
                 userId: rest.userId,
@@ -109,21 +109,17 @@ export default {
               this.App.Temp.User = userObj;
 
               // 登录用户信息属于临时信息，记录在sessionStorage中
-              this.App.Util.setSessionStorage('User', userObj);
+              auth.setSessionStorage('User', userObj);
 
-              this.App.Temp.Settings = this.App.Util.getLocalStorage('Settings') || {};
+              this.App.Temp.Settings = auth.getLocalStorage('Settings') || {};
               if (this.rememberMe) {
                 // 是否记住用户属于配置信息，记录在localStorage中
-                this.App.Util.setLocalStorage('RememberUser', {
+                auth.setLocalStorage('RememberUser', {
                   userName: this.userName,
                   // todo: 此处很不安全，要进行加密
                   userPwd: this.password
                 });
               }
-
-              // this.loadConstant(this.App.Temp.accessType);
-              // loadBaseData();
-
               this.$router.push('/workOrder');
             })
             .catch((e) => {
