@@ -1,5 +1,5 @@
-# navi-vue-editor-framework 
-基于Vue框架的Web地图编辑器的基础工程
+# mapbox-experiment
+用于mapbox-gl的学习
 
 ## 工程的环境依赖
 1. vue2.0
@@ -14,3 +14,12 @@
 10. element-ui // ui组件
 11. veeValidate  // form验证
 12. vue-easytable // 表格组件
+
+## 工程安装
+yarn install
+
+## 工程构建
+yarn build
+
+## 工程启动
+yarn serve
