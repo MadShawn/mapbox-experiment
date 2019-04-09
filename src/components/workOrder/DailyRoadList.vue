@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import DSManage from '@/services/DSManage';
 import FmTable from '@/components/common/FmTable.vue';
 
 export default {

@@ -1,13 +1,17 @@
 <template>
   <div id="app" class="fm-stretch">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 <script>
+import App from '@/Application';
+import storage from '@/utils/storage';
+import AppUtil from '@/utils/AppUtil';
+
 export default {
   name: 'app',
   methods: {
-    loadConstant(accessType) {
+    loadConstants(accessType) {
       const reqs = [];
       // 默认中国大陆
       reqs.push(this.axios.get('./constant/locale/default/main.json'));
@@ -17,56 +21,60 @@ export default {
       }
 
       Promise.all(reqs).then((res) => {
-        this.App.Constant = this.App.Constant || {};
+        const cons = {};
         res.forEach((it) => {
-          Object.assign(this.App.Constant, it.data);
+          Object.assign(cons, it.data);
         });
+
+        this.$store.commit('loadConstants', cons);
       });
     }
   },
   created() {
     // 非Chrome浏览器警告
-    if (!this.App.Util.testBrowser(['Chrome/57'])) {
+    if (!AppUtil.testBrowser(['Chrome/57'])) {
       alert('请使用谷歌浏览器！');
       return;
     }
 
+    storage.setLocalKey(App.Config.appName);
+
     // 页面刷新时，从sessionStorage中读取用户信息
-    const accessToken = this.App.Util.getUrlParam('access_token');
+    const accessToken = AppUtil.getUrlParam('access_token');
     if (accessToken) {
-      this.App.Temp.accessToken = accessToken;
-      if (!this.App.Temp.User) {
-        const userCookie = this.App.Util.getSessionStorage('User');
-        if (userCookie) {
-          this.App.Temp.accessType = userCookie.accessType;
-          this.App.Temp.User = userCookie;
+      storage.setSessionKey(accessToken);
 
-          this.loadConstant(this.App.Temp.accessType);
-        }
+      const user = storage.getSessionStorage('User');
+      if (user) {
+        const accessType = storage.getSessionStorage('Access-Type');
+        const payload = {
+          accessToken,
+          accessType,
+          user
+        };
+        this.$store.commit('login', payload);
+
+        this.loadConstants(accessType);
       }
 
-      // 从sessionStorage中读取工单信息
-      if (!this.App.Temp.WorkOrder) {
-        const workOrderCookie = this.App.Util.getSessionStorage('WorkOrder');
-        if (workOrderCookie) {
-          this.App.Temp.WorkOrder = workOrderCookie;
-        }
+      const workOrder = storage.getSessionStorage('Work-Order');
+      if (workOrder) {
+        this.$store.commit('loadWorkOrder', workOrder);
       }
 
-      this.App.Temp.Settings = this.App.Util.getLocalStorage('Settings') || {};
+      const settings = storage.getLocalStorage('Settings') || {};
+      this.$store.commit('loadSettings', settings);
     }
   }
 };
-
 </script>
 <style>
-@import "./assets/css/layout.css";
-@import "./assets/css/form.css";
-@import "./assets/css/component.css";
+@import './assets/css/layout.css';
+@import './assets/css/form.css';
+@import './assets/css/component.css';
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 </style>

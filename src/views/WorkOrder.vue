@@ -37,7 +37,7 @@
         </div>
         <div class="fm-container bottom">
           <div class="menubar-footer">
-            <button class="menu-btn blue">账户设置</button>
+            <button class="menu-btn blue" @click="testPost">账户设置</button>
             <button class="menu-btn red" @click="logout">退出</button>
           </div>
         </div>
@@ -62,6 +62,8 @@
 </template>
 
 <script>
+import { dsEdit } from '@/services';
+
 export default {
   name: 'WorkOrder',
   props: {},
@@ -122,6 +124,21 @@ export default {
     },
     test(params) {
       this.$router.push('mapEditor');
+    },
+    testPost() {
+      dsEdit.create(
+        'RDNODE',
+        [
+          {
+            objData: {
+              geometry: 'POINT(116.66747 40.399942676547)',
+              objStatus: 'INSERT'
+            },
+            objName: 'RDNODE'
+          }
+        ],
+        { linkPid: 19852446, sceneId: 200 }
+      );
     }
   },
   watch: {},
@@ -198,12 +215,12 @@ export default {
     no-repeat;
 }
 .icon-btn.arrow-left {
-  background: url('../assets/images/workOrder/icon_arrow_left.png') center center
-    no-repeat;
+  background: url('../assets/images/workOrder/icon_arrow_left.png') center
+    center no-repeat;
 }
 .icon-btn.arrow-down {
-  background: url('../assets/images/workOrder/icon_arrow_down.png') center center
-    no-repeat;
+  background: url('../assets/images/workOrder/icon_arrow_down.png') center
+    center no-repeat;
 }
 button.menu-btn {
   font-size: 14px;

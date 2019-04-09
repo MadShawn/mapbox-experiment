@@ -9,18 +9,7 @@ import '@/plugins/element';
 import '@/plugins/validate';
 import '@/plugins/easytable';
 
-import Global from './Application';
-
 Vue.config.productionTip = false;
-
-// 混入全局变量App
-Vue.mixin({
-  data() {
-    return {
-      App: Global
-    };
-  }
-});
 
 new Vue({
   router,
