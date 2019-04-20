@@ -2,8 +2,8 @@
  * 全局配置
  */
 window.Config = {
-  appName: 'FM-DataView',
-  appTitle: 'Fastmap数据浏览平台',
+  appName: 'navi-vue-editor-framework',
+  appTitle: '四维Web编辑平台基础框架',
   // 服务地址配置信息
   services: {
     // 编辑服务

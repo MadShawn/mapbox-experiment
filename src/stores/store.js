@@ -1,5 +1,5 @@
-import storage from '@/utils/storage';
 import App from '@/Application';
+import storage from '@/utils/storage';
 
 const store = {
   state: {
@@ -11,7 +11,7 @@ const store = {
     Constants: {}, // 全局常量
   },
   getters: {
-    testLogin(state) {
+    isAuthurized(state) {
       if (!state.User) {
         return false;
       }
@@ -34,30 +34,24 @@ const store = {
       App.Session.accessToken = state.accessToken;
       App.Session.accessType = state.accessType;
       App.Session.User = state.User;
-      storage.setSessionKey(state.accessToken);
-      storage.setSessionStorage('Access-Token', state.accessToken);
-      storage.setSessionStorage('Access-Type', state.accessType);
-      storage.setSessionStorage('User', state.User);
     },
     loadConstants(state, payload) {
       state.Constants = {
         ...payload,
         ...state.Constants
       };
-      storage.setLocalStorage('Constants', state.Constants);
     },
-    loadWorkOrder(state, workOrder) {
+    resetWorkOrder(state, workOrder) {
       state.WorkOrder = workOrder;
-      App.Session.Settings = state.WorkOrder;
-      storage.setSessionStorage('Work-Order', state.WorkOrder);
+      App.Session.WorkOrder = state.WorkOrder;
     },
-    loadSettings(state, settings) {
+    resetSettings(state, settings) {
       state.Settings = {
         ...settings,
         ...state.Settings,
       };
       App.Session.Settings = state.Settings;
-      storage.setLocalStorage('Settings', state.Settings);
+      storage.setLocalStorage('App-Settings', storage);
     },
     clearSession(state) {
       state.accessToken = null;
@@ -75,5 +69,24 @@ const store = {
 
   }
 };
+
+/**
+ * 以缓存初始化状态（state）
+ * 用于页面刷新时的状态保持
+ */
+function initialize() {
+  const stateObj = store.state;
+  const stateCache = storage.getSessionStorage('App-State');
+  if (stateCache) {
+    Object.assign(stateObj, stateCache);
+    Object.assign(App.Session, stateCache);
+  } else {
+    const settings = storage.getLocalStorage('App-Settings');
+    Object.assign(stateObj.Settings, settings);
+    Object.assign(App.Session.Settings, settings);
+  }
+}
+
+initialize();
 
 export default store;

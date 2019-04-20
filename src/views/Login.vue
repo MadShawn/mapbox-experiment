@@ -61,6 +61,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import App from '@/Application';
 import { dsManage } from '@/services';
 import storage from '@/utils/storage';
@@ -84,6 +85,26 @@ export default {
     clearCaches() {
       this.$store.commit('clearSession');
     },
+    loadConstants(accessType) {
+      const reqs = [];
+      // 默认中国大陆
+      reqs.push(axios.get('../assets/jsons/locale/default/main.json'));
+      if (accessType !== 'CN') {
+        // 除中国大陆外的其他国家/地区
+        reqs.push(axios.get(`../assets/jsons/locale/${accessType}/main.json`));
+      }
+
+      Promise.all(reqs).then((res) => {
+        const cons = {};
+        res.forEach((it) => {
+          Object.assign(cons, it.data);
+        });
+
+        this.$store.commit('loadConstants', cons);
+      }).catch(e => {
+        console.log(e);
+      });
+    },
     doLogin() {
       if (this.showLoading) {
         return;
@@ -92,11 +113,8 @@ export default {
       this.$validator.validate().then((result) => {
         if (result) {
           this.showLoading = true;
+          // 记录登录模式
           App.Session.accessType = this.accessType;
-          const param = {
-            userNickName: this.userName,
-            userPassword: this.password
-          };
           dsManage
             .login(this.userName, this.password)
             .then((rest) => {
@@ -110,6 +128,8 @@ export default {
                 }
               };
               this.$store.commit('login', payload);
+
+              this.loadConstants(this.accessType);
 
               if (this.rememberMe) {
                 // 是否记住用户属于配置信息，记录在localStorage中
@@ -145,6 +165,7 @@ export default {
     }
   },
   mounted() {
+    // 进入登录页面后，清空会话变量和会话缓存，保证必须重新登录
     this.clearCaches();
   }
 };

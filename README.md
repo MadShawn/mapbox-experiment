@@ -1,5 +1,5 @@
-# mapbox-experiment
-用于mapbox-gl的学习
+# navi-vue-editor-framework
+基于Vue前端框架的四维Web编辑平台的基础框架
 
 ## 工程的环境依赖
 1. vue2.0

@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="fm-container col right">
-      <router-view @row-dblclick="test"></router-view>
+      <router-view @row-dblclick="selectWorkOrder"></router-view>
     </div>
   </div>
 </template>
@@ -119,11 +119,15 @@ export default {
         }
       }
     },
-    logout() {
-      this.$router.push('login');
+    selectWorkOrder(params) {
+      this.$router.push({
+        name: 'mapEditor'
+      });
     },
-    test(params) {
-      this.$router.push('mapEditor');
+    logout() {
+      this.$router.push({
+        name: 'login'
+      });
     },
     testPost() {
       dsEdit.create(
